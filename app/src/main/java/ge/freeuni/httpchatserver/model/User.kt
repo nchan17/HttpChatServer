@@ -1,9 +1,8 @@
-package ge.freeuni.httpchatserver
+package ge.freeuni.httpchatserver.model
 
 import android.os.Parcelable
 import androidx.room.*
 import kotlinx.android.parcel.Parcelize
-import java.util.*
 
 @Parcelize
 @Entity(tableName = "users")

@@ -1,4 +1,4 @@
-package ge.freeuni.httpchatserver.main
+package ge.freeuni.httpchatserver.mainPage
 
 import android.os.Bundle
 import android.view.Menu

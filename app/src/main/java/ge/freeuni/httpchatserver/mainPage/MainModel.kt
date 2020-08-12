@@ -1,6 +1,5 @@
-package ge.freeuni.httpchatserver.main
+package ge.freeuni.httpchatserver.mainPage
 
-import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import ge.freeuni.httpchatserver.database.AppDatabase
@@ -12,7 +11,7 @@ import ge.freeuni.httpchatserver.model.User
 class MainModel(var context: Context) : MainContract.Model {
     private var db: AppDatabase =
         Room.databaseBuilder(context, AppDatabase::class.java, "database-name")
-            .fallbackToDestructiveMigration()
+            .fallbackToDestructiveMigration().allowMainThreadQueries()
             .build()
     private var userDao: UserDao = db.userDao()
 
@@ -30,6 +29,10 @@ class MainModel(var context: Context) : MainContract.Model {
 
     override fun insertAllMessages(vararg message: Message) {
         return userDao.insertAllMessages(*message)
+    }
+
+    override fun insertAllUsers(vararg user: User) {
+        return userDao.insertAllUsers(*user)
     }
 
     override fun delete(user: User) {

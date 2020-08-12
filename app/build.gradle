@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -18,6 +19,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    androidExtensions {
+        experimental = true
     }
 }
 
@@ -40,4 +44,9 @@ dependencies {
     apply plugin: 'kotlin-kapt'
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    implementation "androidx.preference:preference-ktx:1.1.1"
+    apply plugin: 'com.android.application'
+    apply plugin: 'kotlin-android'
+    apply plugin: 'kotlin-android-extensions'
 }

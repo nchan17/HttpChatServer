@@ -68,6 +68,7 @@ class MainActivity : AppCompatActivity() {
 
             mHttpServer!!.createContext("/", rootHandler)
             mHttpServer!!.createContext("/index", rootHandler)
+            mHttpServer!!.createContext("/introduce", introduceHandler)
             // Handle /messages endpoint
             mHttpServer!!.createContext("/messages", messageHandler)
             mHttpServer!!.start()//startServer server;
@@ -93,7 +94,21 @@ class MainActivity : AppCompatActivity() {
             // Get request method
             when (exchange!!.requestMethod) {
                 "GET" -> {
-                    sendResponse(exchange, "Welcome to my server")
+                    sendResponse(exchange, "true")
+                }
+
+            }
+        }
+
+    }
+
+    // Handler for introduction endpoint
+    private val introduceHandler = HttpHandler { exchange ->
+        run {
+            // Get request method
+            when (exchange!!.requestMethod) {
+                "GET" -> {
+                    sendResponse(exchange, "true")
                 }
 
             }
